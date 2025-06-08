@@ -5,16 +5,36 @@
     <title>Dorofii Karnaukh – Junior PHP / Python Developer</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
 <body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div id="flash-messages" style="max-width:750px;margin:20px auto;">
+          {% for category, message in messages %}
+            <div style="background:#e0e7ff;color:#2d3a4a;padding:10px 18px;border-radius:6px;margin-bottom:10px;">
+              {{ message }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
     <div class="cv-container">
-        <h1>Dorofii Karnaukh</h1>
-        <h2>Junior PHP / Python Developer</h2>
-        <p>
-            📞 +48 537 647 071<br>
-            📧 dorofii.2005@gmail.com<br>
-            🌐 <a href="https://github.com/dorofi" target="_blank">github.com/dorofi</a>
-        </p>
+        <div class="header">
+            <div class="avatar">DK</div>
+            <div class="header-info">
+                <h1>Dorofii Karnaukh</h1>
+                <h2>Junior PHP / Python Developer</h2>
+                <div class="contacts">
+                    📞 +48 537 647 071 &nbsp;|&nbsp;
+                    📧 <a href="mailto:dorofii.2005@gmail.com">dorofii.2005@gmail.com</a> &nbsp;|&nbsp;
+                    🌐 <a href="https://github.com/dorofi" target="_blank">github.com/dorofi</a>
+                </div>
+                <div style="margin-top: 12px;">
+                    <a href="{{ url_for('static', filename='Dorofii – Junior PHP  Python Developer.pdf') }}" class="download-btn" download>⬇️ Pobierz CV (PDF)</a>
+                </div>
+            </div>
+        </div>
         <section>
             <h3>Profil zawodowy</h3>
             <p>Zmotiwowany i ambitny junior developer z praktycznym doświadczeniem w tworzeniu stron internetowych.<br>
@@ -61,6 +81,22 @@
                 <li>Angielski – podstawowy (A1)</li>
             </ul>
         </section>
+        <section>
+            <h3>Formularz kontaktowy</h3>
+            <form method="post" action="/contact" class="contact-form">
+                <input type="text" name="name" placeholder="Imię" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="message" placeholder="Wiadomość" rows="4" required></textarea>
+                <button type="submit">Wyślij</button>
+            </form>
+        </section>
     </div>
+    <script>
+      // Автоматическое скрытие flash-сообщения через 4 секунды
+      setTimeout(function() {
+        var flash = document.getElementById('flash-messages');
+        if(flash) flash.style.display = 'none';
+      }, 4000);
+    </script>
 </body>
 </html>
