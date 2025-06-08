@@ -1,18 +1,20 @@
 # Personal CV Website
 
-This project is a personal CV website built using Flask. It showcases personal information, skills, education, work experience, and languages in a structured format.
+This project is a personal CV website built using Flask. It showcases personal information, skills, education, work experience, and languages in a structured format.  
+Includes a contact form that sends messages directly to your Telegram via a bot, and a button to download your CV as a PDF.
 
 ## Project Structure
 
 ```
-personal-cv-website
+cv-python-flask
 ├── app
 │   ├── __init__.py
 │   ├── routes.py
 │   ├── templates
 │   │   └── index.html
 │   └── static
-│       └── style.css
+│       ├── style.css
+│       └── Dorofii_Karnaukh_CV.pdf
 ├── requirements.txt
 ├── run.py
 └── README.md
@@ -22,48 +24,60 @@ personal-cv-website
 
 1. **Clone the repository:**
    ```
-   git clone <repository-url>
-   cd personal-cv-website
+   git clone https://github.com/dorofi/cv-python-flask.git
+   cd cv-python-flask
    ```
 
-2. **Create a virtual environment:**
+2. **(Optional) Create and activate a virtual environment:**
    ```
    python -m venv venv
+   venv\Scripts\activate   # On Windows
+   source venv/bin/activate  # On macOS/Linux
    ```
 
-3. **Activate the virtual environment:**
-   - On Windows:
-     ```
-     venv\Scripts\activate
-     ```
-   - On macOS/Linux:
-     ```
-     source venv/bin/activate
-     ```
-
-4. **Install the required dependencies:**
+3. **Install the required dependencies:**
    ```
    pip install -r requirements.txt
    ```
 
-5. **Run the application:**
+4. **Configure your Telegram bot:**
+   - Create a bot via [@BotFather](https://t.me/BotFather) and get your token.
+   - Get your chat_id (write to your bot and check `/getUpdates`).
+   - Set `TELEGRAM_TOKEN` and `TELEGRAM_CHAT_ID` in `app/routes.py`.
+
+5. **Add your PDF CV:**
+   - Place your PDF file (e.g., `Dorofii_Karnaukh_CV.pdf`) in the `app/static/` folder.
+
+6. **Run the application:**
    ```
    python run.py
    ```
 
-6. **Open your web browser and go to:**
+7. **Open your web browser and go to:**
    ```
    http://127.0.0.1:5000
    ```
 
-## Overview
+## Features
 
-This CV website is designed to present personal information in a clean and professional manner. It includes sections for:
+- Modern responsive design
+- Downloadable PDF CV
+- Contact form with Telegram integration (messages go directly to your Telegram)
+- Flash messages with auto-hide
 
-- Personal Information
-- Skills
-- Education
-- Work Experience
-- Languages
+## Technologies
+
+- Python 3.11+
+- Flask 2.2.2
+- Gunicorn
+- Jinja2
+- requests
+
+## Author
+
+Dorofii Karnaukh  
+[GitHub](https://github.com/dorofi)
+
+---
 
 Feel free to customize the content and styles to better reflect your personal brand!
